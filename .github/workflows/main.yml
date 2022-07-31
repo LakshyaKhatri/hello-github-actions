@@ -9,11 +9,9 @@ jobs:
       - uses: actions/checkout@v1
       - name: testing secrets 🔒
         shell: bash
-        env:
-          TEST_SECRET: ${{ secrets.TEST_SECRET }}
-        run: echo "$TEST_SECRET" > ~/.testsecret
+        run: echo ${{ secrets.TEST_SECRET }} > $HOME/.testsecret
       - name: print secret
-        run: cat ~/.testsecret
+        run: cat $HOME/.testsecret | grep lakshya
       - uses: ./action-a
         with:
           MY_NAME: "Mona"
