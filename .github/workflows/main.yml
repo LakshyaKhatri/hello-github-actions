@@ -11,9 +11,9 @@ jobs:
         shell: bash
         env:
           TEST_SECRET: ${{ secrets.TEST_SECRET }}
-        run: |
-          echo "$TEST_SECRET" > ~/.testsecret
-          cat ~/.testsecret
+        run: echo "$TEST_SECRET" > ~/.testsecret
+      - name: print secret
+        run: cat ~/.testsecret
       - uses: ./action-a
         with:
           MY_NAME: "Mona"
