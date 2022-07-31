@@ -7,6 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: testing secrets 🔒
+        shell: bash
+        env:
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+        run: |
+          echo "$TEST_SECRET" > ~/.testsecret
+          cat ~/.testsecret
       - uses: ./action-a
         with:
           MY_NAME: "Mona"
